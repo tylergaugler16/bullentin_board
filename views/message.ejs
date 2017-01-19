@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Document</title>
+</head>
+<body>
+
+    <h1 contenteditable="true" name='title' id="title" ><%= message.title %> </h1>
+    <p contenteditable="true" name="body" id="message"><%= message.body %> </p>
+
+  <form action="/update/messages/<%= message.id %>" method="post">
+    <input type="text" name="title"  id="hiddenTitle" value="" >
+    <textarea name="name" rows="8" cols="80"  id="hiddenMessage" value=""></textarea>
+    <input type="submit" value="Submit">
+  </form>
+
+  <a href="/delete/messages/<%= message.id %>">Delete This Note</a>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="/js/message.js" charset="utf-8"></script>
+</body>
+</html>
