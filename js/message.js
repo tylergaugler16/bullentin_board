@@ -1,9 +1,11 @@
 $(document).ready(function(){
-  console.log("EYOOOO");
   var $title   = $('#title');
-  var $message = document.getElementById('message');
+  var $message = $('#message');
 
-  $title.on('change',function(){
-    console.log("title changing!");
+  $title.on('input',function(){
+    $('#hiddenTitle').val($title.text());
+  });
+  $message.on('input', function(){
+    $('#hiddenMessage').val($message.text());
   });
 });

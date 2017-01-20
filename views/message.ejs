@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Document</title>
+  <title><%= message.title %></title>
 </head>
 <body>
 
@@ -13,9 +13,9 @@
     <p contenteditable="true" name="body" id="message"><%= message.body %> </p>
 
   <form action="/update/messages/<%= message.id %>" method="post">
-    <input type="text" name="title"  id="hiddenTitle" value="" >
-    <textarea name="name" rows="8" cols="80"  id="hiddenMessage" value=""></textarea>
-    <input type="submit" value="Submit">
+    <input type="text" name="title"  id="hiddenTitle" value="" hidden>
+    <textarea name="body" rows="8" cols="80"  id="hiddenMessage" value="" hidden></textarea>
+    <input type="submit" value="Update">
   </form>
 
   <a href="/delete/messages/<%= message.id %>">Delete This Note</a>

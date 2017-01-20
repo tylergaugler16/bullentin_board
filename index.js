@@ -45,7 +45,9 @@ app.post("/messages", function(req, res){
 });
 
 app.get("/messages/:id", function(req, res){
+  console.log("yoo i'm trying to get a specific message");
   pg.connect(connectionString, function(err, client, done){
+    console.log(req.params.id);
     client.query(`select * from messages where id='${req.params.id}'`,function(err, result){
       done();
       pg.end();
@@ -71,22 +73,20 @@ app.get("/delete/messages/:id", function(req, res){
 });
 
 app.post("/update/messages/:id", function(req, res){
-  res.send("Trying to update");
-  console.log(req.body);
-  // res.send(req.query.title);
-  // res.send(req.body.title);
-  // pg.connect(connectionString, function(err, client, done){
-  //   client.query(`update from messages where id='${req.params.id}' title='${req.body.title.replace("'","''")}' body='${req.body.body.replace("'","''")}'`);
-  //   if(err){
-  //     console.log("ERROR UPDATING RECORD");
-  //   }
-  //   else{
-  //     console.log("UPDATED RECORD!");
-  //   }
-  //   res.redirect("/messages/"+req.params.id);
-  //   done();
-  //   pg.end();
-  // });
+  console.log("update page");
+  pg.connect(connectionString, function(err, client, done){
+    client.query(`update messages set title='${req.body.title.replace("'","''")}', body='${req.body.body.replace("'","''")}' where id='${req.params.id}'`,function(err, result){
+      if(err){
+        console.log(err);
+      }
+      res.redirect("/messages/"+req.params.id);
+      done();
+      pg.end();
+    });
+
+
+
+  });
 });
 
 
