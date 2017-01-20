@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //to serve up static resources.(etc. js/message.js)
 app.use(express.static("/"));
 app.use("/js", express.static(__dirname + '/js'));
+app.use("/css", express.static(__dirname + '/css'));
 
 var connectionString = 'postgres://' + process.env.POSTGRES_USER + ':' + process.env.POSTGRES_PASSWORD + '@localhost/bulletin_board';
 
